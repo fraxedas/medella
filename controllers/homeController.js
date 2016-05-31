@@ -3,9 +3,7 @@
 	homeController.init = function (app) {
 
 		var data = require('../data');
-		var Sparky = require('node-sparky');
-		var sparky = new Sparky({ token: data.sparkToken });
-		var request = require('request');
+		var notify = require('../lib/notify');
 
 		app.get("/", function (req, res) {
 			var package = require('../package.json');
@@ -20,43 +18,12 @@
 
 			var roomId = data.roomId;
 			var text = patient.name + " has initiated an SoS call. Medic history: " + patient.notes + ". Address: " + patient.location;
-
-			sparky.message.send.room(roomId, { text: text }, function (err, results) {
-
-				var sms = {
-					token: data.tropoSmsToken,
-					numberToDial: data.caregiver.phone,
-					msg: text
-				};
-				var smsOptions = {
-					url: data.tropoUrl,
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					json: sms
-				};
-
-				request.post(smsOptions, function (error, response, body) {
-
-					var call = {
-						token: data.tropoCallToken,
-						numberToDial: data.patient.phone
-					};
-					var callOptions = {
-						url: data.tropoUrl,
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						json: call
-					};
-
-					request.post(callOptions, function (error, response, body) {
-						res.send({ error: error, result: body });
-					});
-				});
-
-
-			});
+				
+			notify.chat(roomId, text);
+			notify.sms(data.caregiver.phone, text);
+			notify.call(data.patient.phone);
+			
+			res.send({ result: text });
 		});
 
 		app.get("/cancel", function (req, res) {
@@ -65,33 +32,15 @@
 			var roomId = data.roomId;
 			var text = details.name + " has cancelled the SoS call";
 
-			sparky.message.send.room(roomId, { text: text }, function (err, results) {
-
-				var sms = {
-					token: data.tropoSmsToken,
-					numberToDial: data.caregiver.phone,
-					msg: text
-				};
-				var smsOptions = {
-					url: data.tropoUrl,
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					json: sms
-				};
-
-				request.post(smsOptions, function (error, response, body) {
-					res.send({ error: error, result: body });
-				});
-
-
-			});
+			notify.chat(roomId, text);
+			notify.sms(data.caregiver.phone, text);
+			
+			res.send({ result: text });
 		});
 
 		app.get("/ping", function (req, res) {
 			var details = data.patient;
 
-			var roomId = data.roomId;
 			var text = details.name + " is reporting";
 
 			console.log(text);
