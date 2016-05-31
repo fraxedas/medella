@@ -1,6 +1,6 @@
 {
-  "name": "cisco-devnet-coding-camp",
-  "version": "1.0.0",
+  "name": "medella",
+  "version": "1.0.1",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fraxedas/cisco-devnet-coding-camp.git"
+    "url": "git+https://github.com/fraxedas/medella.git"
   },
   "author": "Oscar Fraxedas <fraxedas@gmail.com> (https://github.com/fraxedas)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fraxedas/cisco-devnet-coding-camp/issues"
+    "url": "https://github.com/fraxedas/medella/issues"
   },
-  "homepage": "https://github.com/fraxedas/cisco-devnet-coding-camp#readme",
+  "homepage": "https://github.com/fraxedas/medella#readme",
   "dependencies": {
     "body-parser": "^1.15.1",
     "cron": "^1.1.0",
@@ -24,8 +24,7 @@
     "node-persist": "0.0.11",
     "node-sparky": "^2.0.26",
     "request": "^2.72.0",
-    "var": "^0.1.3",
-    "vash": "^0.11.3"
+    "var": "^0.1.3"
   },
   "devDependencies": {
     "grunt": "^1.0.1",

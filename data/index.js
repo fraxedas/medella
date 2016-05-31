@@ -1,18 +1,14 @@
 (function (data) {
     data.caregiver = {
             name: "Shayak Dutta",
-            phone: "6479905555"
+            phone: "6479716879"
     };
 
     data.patient = {
-        name: "Oscar Fraxedas",
-        phone: "6479715555",
-        location: "123 Sesame St, Toronto, ON M1W, Canada",
-        notes: "Type 1 diabetes, allergic to tylenol and very grouchy"
-    };
-
-    data.details = function (id) {
-        return database[id];
+        name: "Oscar",
+        phone: "6479716879",
+        location: "123 Sesame St",
+        notes: "Very grouchy"
     };
 
     data.roomId = "Y2lzY29zcGFyazovL3VzL1JPT00vZTQ4ODFmYjAtMTlkYS0xMWU2LWJmNGMtYzc2MWViNjMyMTg2";

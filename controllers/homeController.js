@@ -8,7 +8,11 @@
 		var request = require('request');
 
 		app.get("/", function (req, res) {
-			res.send({ name: "Nava, Jas, Shayak and Oscar" });
+			var package = require('../package.json');
+			res.send({
+				name: "Nava, Jas, Shayak and Oscar",
+				version: package.version
+			});
 		});
 
 		app.get("/sos", function (req, res) {
@@ -54,7 +58,7 @@
 
 			});
 		});
-		
+
 		app.get("/cancel", function (req, res) {
 			var details = data.patient;
 
