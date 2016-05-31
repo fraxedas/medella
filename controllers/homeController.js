@@ -22,6 +22,10 @@
 			notify.chat(roomId, text);
 			notify.sms(data.caregiver.phone, text);
 			notify.call(data.patient.phone);
+			notify.log([{
+				event: "sos",
+				source: data.patient.name
+			}]);
 			
 			res.send({ result: text });
 		});
@@ -34,17 +38,20 @@
 
 			notify.chat(roomId, text);
 			notify.sms(data.caregiver.phone, text);
+			notify.log([{
+				event: "cancel",
+				source: data.patient.name
+			}]);
 			
 			res.send({ result: text });
 		});
 
 		app.get("/ping", function (req, res) {
-			var details = data.patient;
-
-			var text = details.name + " is reporting";
-
-			console.log(text);
-			res.send(details);
+			notify.log([{
+				event: "ping",
+				source: data.patient.name
+			}]);
+			res.send("pong");
 		});
 
 	};
