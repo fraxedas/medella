@@ -8,7 +8,7 @@
         name: "Oscar",
         phone: "6479716879",
         location: "123 Sesame St",
-        notes: "Very grouchy"
+        notes: "Very grouchy and green"
     };
 
     data.roomId = "Y2lzY29zcGFyazovL3VzL1JPT00vZTQ4ODFmYjAtMTlkYS0xMWU2LWJmNGMtYzc2MWViNjMyMTg2";

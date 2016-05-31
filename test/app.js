@@ -1,10 +1,10 @@
 var assert = require("assert");
-var seed = require("../data/seedData")
+var data = require("../data");
 
 describe('Initial data', function(){
     describe('The scenario', function(){
         it('should not be empty', function(){
-            assert.ok(seed.initialApps);
-        })
-    })
+            assert.ok(data.patient);
+        });
+    });
 });
