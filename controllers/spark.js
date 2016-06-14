@@ -1,8 +1,8 @@
 (function (spark) {
 
-	var data = require('../data');
+	var config = require('../lib/config');
 	var Sparky = require('node-sparky');
-	var sparky = new Sparky({ token: data.sparkToken });
+	var sparky = new Sparky({ token: config.sparkToken });
 
 	spark.rooms = function (req, res) {
 		sparky.rooms.get(function (err, results) {

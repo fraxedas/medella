@@ -4,9 +4,10 @@
         
         var home = require('./home');
 		app.get("/", home.authors);
-		app.get("/sos", home.sos);
-		app.get("/cancel", home.cancel);
-		app.get("/ping", home.ping);
+		app.get("/init", home.init);
+		app.get("/sos/:username", home.sos);
+		app.get("/cancel/:username", home.cancel);
+		app.get("/ping/:username", home.ping);
         
         var tropo = require('./tropo.js');
         app.post("/tropo/call", tropo.call);

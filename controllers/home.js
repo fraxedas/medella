@@ -1,6 +1,7 @@
 (function (home) {
-	var data = require('../data');
+	var data = require('../lib/data');
 	var notify = require('../lib/notify');
+	var config = require('../lib/config');
 
 	home.notify = notify;
 	home.data = data;
@@ -8,48 +9,69 @@
 	home.authors = function (req, res) {
 		var package = require('../package.json');
 		res.send({
-			name: "Nava, Jas, Shayak and Oscar",
+			name: config.authors,
 			version: package.version
 		});
 	};
 
+	home.init = function (req, res) {
+		data.get_or_create_user(data.patient, function (err, user) {
+			if (err) {
+				res.status(500).send(err);
+			}
+			else {
+				res.status(200).send(user);
+			}
+		});
+
+	};
+
 	home.sos = function (req, res) {
-		var patient = data.patient;
+		var username = req.params.username;
+		data.get_user(username, function (error, user) {
+			if (error) {
+				res.status(404).send();
+			}
+			else {
 
-		var roomId = data.roomId;
-		var text = patient.name + " has initiated an SoS call. Medic history: " + patient.notes + ". Address: " + patient.location;
+				var roomId = config.roomId;
+				var text = user.name + " has initiated an SoS call. Medic history: " + user.notes + ". Address: " + user.location;
 
-		notify.chat(roomId, text);
-		notify.sms(data.caregiver.phone, text);
-		notify.call(data.patient.phone);
-		notify.log([{
-			event: "sos",
-			source: data.patient.name
-		}]);
+				notify.chat(roomId, text);
+				notify.sms(user.caregiver.phone, text);
+				notify.call(user.phone);
+				notify.log([{
+					event: "sos",
+					source: user.name
+				}]);
 
-		res.send({ result: text });
+				res.send({ result: text });
+			}
+		});
+
 	};
 
 	home.cancel = function (req, res) {
-		var details = data.patient;
+		var patient = data.patient;
 
-		var roomId = data.roomId;
-		var text = details.name + " has cancelled the SoS call";
+		var roomId = config.roomId;
+		var text = patient.name + " has cancelled the SoS call";
 
 		notify.chat(roomId, text);
-		notify.sms(data.caregiver.phone, text);
+		notify.sms(patient.caregiver.phone, text);
 		notify.log([{
 			event: "cancel",
-			source: data.patient.name
+			source: patient.name
 		}]);
 
 		res.send({ result: text });
 	};
 
 	home.ping = function (req, res) {
+		var patient = data.patient;
 		notify.log([{
 			event: "ping",
-			source: data.patient.name
+			source: patient.name
 		}]);
 		res.send("pong");
 	};

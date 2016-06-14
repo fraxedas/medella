@@ -2,7 +2,7 @@
 
     var persist = require('node-persist');
     persist.initSync();
-    var data = require('../data');
+    var data = require('../lib/data');
 
     //https://www.tropo.com/docs/rest/tutorials/starting-session-webapi
     tropo.call = function (req, res) {

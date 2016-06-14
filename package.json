@@ -21,6 +21,7 @@
     "cron": "^1.1.0",
     "express": "^4.13.4",
     "http": "0.0.0",
+    "mongodb": "^2.1.18",
     "node-persist": "0.0.11",
     "node-sparky": "^2.0.26",
     "request": "^2.72.0",
