@@ -26,54 +26,60 @@
 
 	};
 
-	home.sos = function (req, res) {
+	home.template = function (req, res, callback) {
 		var username = req.params.username;
 		data.get_user(username, function (error, user) {
 			if (error) {
-				res.status(404).send();
+				res.status(404).send("We couldn't find: " + username);
 			}
 			else {
-
-				var roomId = config.roomId;
-				var text = user.name + " has initiated an SoS call. Medic history: " + user.notes + ". Address: " + user.location;
-
-				notify.chat(roomId, text);
-				notify.sms(user.caregiver.phone, text);
-				notify.call(user.phone);
-				notify.log([{
-					event: "sos",
-					source: user.name
-				}]);
-
-				res.send({ result: text });
+				callback(user);
 			}
+		});
+	};
+
+	home.sos = function (req, res) {
+		home.template(req, res, function (user) {
+			var roomId = config.roomId;
+			var text = user.name + " has initiated an SoS call. Medic history: " + user.notes + ". Address: " + user.location;
+
+			notify.chat(roomId, text);
+			notify.sms(user.caregiver.phone, text);
+			notify.call(user.phone);
+			notify.log([{
+				event: "sos",
+				source: user.name
+			}]);
+
+			res.send({ result: text });
 		});
 
 	};
 
 	home.cancel = function (req, res) {
-		var patient = data.patient;
+		home.template(req, res, function (user) {
+			var roomId = config.roomId;
+			var text = user.name + " has cancelled the SoS call";
 
-		var roomId = config.roomId;
-		var text = patient.name + " has cancelled the SoS call";
+			notify.chat(roomId, text);
+			notify.sms(user.caregiver.phone, text);
+			notify.log([{
+				event: "cancel",
+				source: user.name
+			}]);
 
-		notify.chat(roomId, text);
-		notify.sms(patient.caregiver.phone, text);
-		notify.log([{
-			event: "cancel",
-			source: patient.name
-		}]);
-
-		res.send({ result: text });
+			res.send({ result: text });
+		});
 	};
 
 	home.ping = function (req, res) {
-		var patient = data.patient;
-		notify.log([{
-			event: "ping",
-			source: patient.name
-		}]);
-		res.send("pong");
+		home.template(req, res, function (user) {
+			notify.log([{
+				event: "ping",
+				source: user.name
+			}]);
+			res.send("pong");
+		});
 	};
 
 
