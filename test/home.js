@@ -17,6 +17,8 @@ describe('Home controller', function () {
         home.notify.sms = sinon.spy();
         home.notify.call = sinon.spy();
         home.notify.log = sinon.spy();
+        home.notify.lockTheDoor = sinon.spy();
+        home.notify.unlockTheDoor = sinon.spy();
         req = res = {};
         res.send = sinon.spy();
     });
@@ -43,6 +45,7 @@ describe('Home controller', function () {
             assert(home.notify.chat.calledOnce, 'chat');
             assert(home.notify.sms.calledOnce, 'sms');
             assert(home.notify.call.calledOnce, 'call');
+            assert(home.notify.unlockTheDoor.calledOnce, 'call');
             assert(home.notify.log.calledOnce, 'log');
             assert(res.send.calledOnce, 'res');
         });
@@ -55,6 +58,7 @@ describe('Home controller', function () {
 
             assert(home.notify.chat.calledOnce);
             assert(home.notify.sms.calledOnce);
+            assert(home.notify.lockTheDoor.calledOnce);
             assert(home.notify.log.calledOnce);
             assert(res.send.calledOnce);
         });

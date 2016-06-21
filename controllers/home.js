@@ -46,6 +46,7 @@
 			notify.chat(roomId, text);
 			notify.sms(user.caregiver.phone, text);
 			notify.call(user.phone);
+			notify.unlockTheDoor();
 			notify.log([{
 				event: "sos",
 				source: user.name
@@ -63,6 +64,7 @@
 
 			notify.chat(roomId, text);
 			notify.sms(user.caregiver.phone, text);
+			notify.lockTheDoor();
 			notify.log([{
 				event: "cancel",
 				source: user.name
