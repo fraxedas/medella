@@ -1,0 +1,27 @@
+{
+  "name": "medella",
+  "directory": "public/lib",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3",
+    "angular": "^1.5.7"
+  },
+  "homepage": "https://github.com/fraxedas/medella",
+  "authors": [
+    "Oscar Fraxedas <fraxedas@gmail.com>"
+  ],
+  "description": "Ask for help",
+  "main": "server.js",
+  "keywords": [
+    "sos"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -3,7 +3,7 @@
     controllers.init = function (app){
         
         var home = require('./home');
-		app.get("/", home.authors);
+		app.get("/authors", home.authors);
 		app.get("/init", home.init);
 		app.get("/sos/:username", home.sos);
 		app.get("/cancel/:username", home.cancel);
