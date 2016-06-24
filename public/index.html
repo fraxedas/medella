@@ -1,14 +1,27 @@
 <html>
-  <head>
-    <title>Medella App!</title>
-    <script src="lib/angular/angular.min.js"></script>
-    <script src="app.js"></script>
-  </head>
-  <body ng-app="flapperNews" ng-controller="MainCtrl">
-    <div>
-      {{medella.tittle}}
-      <button ng-click="sos()">SOS</button>
-      <button ng-click="cancel()">Cancel</button>
+
+<head>
+  <title>Medella App!</title>
+  <script src="lib/angular/angular.min.js"></script>
+  <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="app.js"></script>
+</head>
+
+<body ng-app="medella" ng-controller="MainCtrl">
+  <div>
+    <div class="jumbotron">
+      <h1>{{medella.tittle}}</h1>
     </div>
-  </body>
+
+    <span ng-hide="isCalling()">
+      <button class="btn btn-primary btn-lg alert alert-danger" ng-click="sos()">SOS</button>
+    </span>
+
+    <span ng-show="isCalling()">
+      <button class="btn btn-primary btn-lg" ng-click="cancel()">Cancel</button>
+    </span>
+
+  </div>
+</body>
+
 </html>

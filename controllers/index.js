@@ -3,11 +3,11 @@
     controllers.init = function (app){
         
         var home = require('./home');
-		app.get("/authors", home.authors);
-		app.get("/init", home.init);
-		app.get("/sos/:username", home.sos);
-		app.get("/cancel/:username", home.cancel);
-		app.get("/ping/:username", home.ping);
+		app.all("/authors", home.authors);
+		app.all("/init", home.init);
+		app.all("/sos/:username", home.sos);
+		app.all("/cancel/:username", home.cancel);
+		app.all("/ping/:username", home.ping);
         
         var tropo = require('./tropo.js');
         app.post("/tropo/call", tropo.call);
