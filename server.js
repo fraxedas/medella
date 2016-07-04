@@ -7,9 +7,6 @@ var bodyParser = require('body-parser');
 
 var controllers = require("./controllers");
 
-//Setup the view engine
-app.set("view engine", "vash");
-
 /// parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }));
  
