@@ -1,4 +1,4 @@
-var app = angular.module('medella', []);
+'use strict';
 
 app.controller('MainController', [
   '$scope',
@@ -27,12 +27,3 @@ app.controller('MainController', [
     
   },
 ]);
-
-app.factory('medella', function(){
-  var medella = {
-    tittle: "Medella",
-    user: "fraxedas@gmail.com",
-    isCalling: false
-  };
-  return medella;
-})
