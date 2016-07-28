@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-    var files = ['lib/**/*.js', 'data/**/*.js', 'views/**/*.js', 'controllers/**/*.js','test/**/*.js'];
+    var files = ['public/js/**/*.js', 'lib/**/*.js', 'data/**/*.js', 'views/**/*.js', 'controllers/**/*.js','test/**/*.js'];
     
     // Project configuration.
     grunt.initConfig({

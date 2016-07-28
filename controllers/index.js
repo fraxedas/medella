@@ -9,12 +9,12 @@
 		app.all("/cancel/:username", home.cancel);
 		app.all("/ping/:username", home.ping);
         
-		var profile = require('./profile.js');
-        app.get("/profiles/", profile.list);
-        app.get("/profile/:username", profile.get);
-		app.post("/profile/", profile.create);
-		app.put("/profile/", profile.update);
-		app.delete("/profile/:username", profile.delete);
+		var user = require('./user.js');
+        app.get("/user/", user.list);
+        app.get("/user/:username", user.get);
+		app.post("/user/", user.create);
+		app.put("/user/", user.update);
+		app.delete("/user/:username", user.delete);
 
         var tropo = require('./tropo.js');
         app.post("/tropo/call", tropo.call);

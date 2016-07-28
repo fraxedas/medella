@@ -1,5 +1,3 @@
-'use strict';
-
 app.controller('MainController', [
   '$scope',
   '$http',
@@ -24,6 +22,6 @@ app.controller('MainController', [
         $scope.medella.isCalling = false;
       });
     };
-    
+
   },
 ]);

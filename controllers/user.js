@@ -1,11 +1,11 @@
-(function (profile) {
+(function (user) {
 
 	var data = require('../lib/data');
 	var response = require('../lib/response');
 
-	profile.data = data;
+	user.data = data;
 
-	profile.list = function (req, res) {
+	user.list = function (req, res) {
 		data.list_users(function (error, users) {
 			if (error) {
 				response.failure(res, error);
@@ -17,7 +17,7 @@
 		});
 	};
 
-	profile.get = function (req, res) {
+	user.get = function (req, res) {
 		var username = req.params.username;
 		data.get_user(username, function (error, user) {
 			if (error) {
@@ -32,7 +32,7 @@
 		});
 	};
 
-	profile.create = function (req, res) {
+	user.create = function (req, res) {
 		var user = req.body;
 		data.get_user(user.username, function (error, existing) {
 			if (error) {
@@ -54,7 +54,7 @@
 		});
 	};
 
-	profile.update = function (req, res) {
+	user.update = function (req, res) {
 		var user = req.body;
 		data.get_user(user.username, function (error, existing) {
 			if (error) {
@@ -76,7 +76,7 @@
 		});
 	};
 
-	profile.delete = function (req, res) {
+	user.delete = function (req, res) {
 		var username = req.params.username;
 		data.get_user(username, function (error, existing) {
 			if (error) {
