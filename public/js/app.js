@@ -11,6 +11,11 @@ var app = angular.module('medella', ['ngRoute'])
         templateUrl: 'templates/user.html',
         controller: 'UserController'
       });
+
+    $routeProvider.otherwise(
+      {
+        redirectTo: '/'
+      });
   })
   .factory('medella', function () {
     var medella = {
