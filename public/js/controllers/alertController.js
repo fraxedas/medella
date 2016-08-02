@@ -1,4 +1,4 @@
-app.controller('MainController', [
+app.controller('AlertController', [
   '$scope',
   '$http',
   'medella',

@@ -1,0 +1,9 @@
+<div>
+  <span ng-hide="isCalling()">
+      <button class="btn btn-primary alert alert-danger" ng-click="sos()">SOS</button>
+  </span>
+
+  <span ng-show="isCalling()">
+      <button class="btn btn-primary alert" ng-click="cancel()">Cancel</button>
+  </span>
+</div>

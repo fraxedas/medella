@@ -3,22 +3,24 @@
 <head>
   <title>Medella App!</title>
   <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular-route/angular-route.min.js"></script>
   <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="js/app.js"></script>
-  <script src="js/controllers/mainController.js"></script>
+  <script src="js/controllers/alertController.js"></script>
+  <script src="js/controllers/userController.js"></script>
   <link rel="icon" type="image/png" sizes="96x96" href="image/favicon.png">
 </head>
 
-<body ng-app="medella" ng-controller="MainController">
+<body ng-app="medella">
 
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">{{medella.tittle}}</a>
+        <a class="navbar-brand" href="#/">Medella</a>
       </div>
 
       <div class="navbar-nav navbar-right">
-        <a class="navbar-brand" href="user.html">
+        <a class="navbar-brand" href="#/user">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         </a>
       </div>
@@ -27,17 +29,9 @@
   </nav>
 
   <div>
-    <div class="page-header">
-      <h1>{{medella.tittle}}</h1>
-    </div>
 
-    <span ng-hide="isCalling()">
-      <button class="btn btn-primary btn-lg alert alert-danger" ng-click="sos()">SOS</button>
-    </span>
-
-    <span ng-show="isCalling()">
-      <button class="btn btn-primary btn-lg" ng-click="cancel()">Cancel</button>
-    </span>
+  <ng-view>
+  </ng-view>
 
   </div>
 </body>
