@@ -1,11 +1,11 @@
 var app = angular.module('medella', ['ngRoute'])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider.when('/',
       {
         templateUrl: 'templates/sos.html',
         controller: 'AlertController'
       });
-    
+
     $routeProvider.when('/user',
       {
         templateUrl: 'templates/user.html',
@@ -16,6 +16,8 @@ var app = angular.module('medella', ['ngRoute'])
       {
         redirectTo: '/'
       });
+
+    $locationProvider.html5Mode(true);
   })
   .factory('medella', function () {
     var medella = {

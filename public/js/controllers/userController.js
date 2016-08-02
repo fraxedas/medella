@@ -17,7 +17,7 @@ app.controller('UserController', [
     };
 
     $scope.cancel = function () {
-      window.location = '/api/index.html';
+      window.location = '/';
     };
 
   },

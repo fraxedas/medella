@@ -24,6 +24,11 @@
         app.get("/api/spark", spark.rooms);
 		app.all("/api/spark/:roomId", spark.room);
 		app.all("/api/spark/:roomId/:text", spark.chat);
+
+		//UI route
+		app.all("*", function (req, res) {
+			res.redirect("/");
+		});
     
     };
 })(module.exports);
