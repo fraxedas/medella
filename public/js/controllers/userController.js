@@ -1,9 +1,8 @@
 app.controller('UserController', [
   '$scope',
-  '$http',
   'medella',
   'userData',
-  function ($scope, $http, medella, userData) {
+  function ($scope, medella, userData) {
 
     $scope.medella = medella;
 
