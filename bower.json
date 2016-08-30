@@ -24,5 +24,8 @@
     "test",
     "tests"
   ],
-  "devDependencies": {}
+  "devDependencies": {
+    "angular-mocks": "^1.5.8",
+    "sinon": "^1.17.5"
+  }
 }

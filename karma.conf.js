@@ -10,17 +10,17 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'requirejs'],
+    frameworks: ['mocha'],
 
 
     // list of files / patterns to load in the browser
     files: [
       'lib/angular/angular.min.js',
       'lib/angular-route/angular-route.min.js',
-      '../node_modules/angular-mocks/angular-mocks.js',
-      '../node_modules/sinon/lib/sinon.js',
+      'lib/angular-mocks/angular-mocks.js',
+      'lib/sinon/lib/sinon.js',
       'js/**/*.js',
-      '../test/client/*.js'
+      'test/*.js'
     ],
 
 
@@ -60,7 +60,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
     
     plugings: [
@@ -76,5 +76,5 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
