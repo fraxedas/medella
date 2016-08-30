@@ -10,16 +10,19 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'lib/angular/angular.min.js',
-      'lib/angular-route/angular-route.min.js',
+      //Bower
+      'lib/angular/angular.js',
+      'lib/angular-route/angular-route.js',
       'lib/angular-mocks/angular-mocks.js',
       'lib/sinon/lib/sinon.js',
+      //App
       'js/**/*.js',
+      //Tests
       'test/*.js'
     ],
 
@@ -64,8 +67,8 @@ module.exports = function (config) {
 
     
     plugings: [
-      'karma-chrome-launcher',
-      'karma-mocha'
+      'karma-phantomjs-launcher',
+      'karma-jasmine'
     ],
 
 
