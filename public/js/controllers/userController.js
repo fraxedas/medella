@@ -1,7 +1,7 @@
 app.controller('UserController', [
   '$scope',
   'medella',
-  'userData',
+  'userDataService',
   function ($scope, medella, userData) {
 
     $scope.medella = medella;

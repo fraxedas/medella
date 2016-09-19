@@ -1,4 +1,4 @@
-app.factory('userData', ['$http', function ($http) {
+app.factory('userDataService', ['$http', function ($http) {
   return {
     get: function (username, next) {
       $http.get('/api/user/' + username).success(next);

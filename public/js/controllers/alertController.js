@@ -2,7 +2,7 @@ app.controller('AlertController', [
   '$scope',
   '$http',
   'medella',
-  'alertData',
+  'alertDataService',
   function ($scope, $http, medella, alertData) {
     $scope.medella = medella;
 

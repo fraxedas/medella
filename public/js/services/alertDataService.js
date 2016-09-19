@@ -1,4 +1,4 @@
-app.factory('alertData', ['$http', function ($http) {
+app.factory('alertDataService', ['$http', function ($http) {
   return {
     sos: function (username, next) {
       return $http.post('/api/sos/' + username).success(next);
