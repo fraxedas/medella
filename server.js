@@ -23,6 +23,10 @@ controllers.init(app);
 var schedule = require("./schedule");
 schedule.init();
 
+//Enable CORS
+var middleware = require('./lib/middleware');
+middleware.init(app);
+
 //Create the server
 var server = http.createServer(app);
 
